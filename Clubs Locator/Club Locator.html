@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GWC Club Locator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" />
+		<script src="jquery-1.11.1.min.js"></script>
+		<script src="jquery.mobile-1.4.3.min.js"></script>
+		<script src="taskObject.js"></script>
+		
+		<style>
+		</style>
+		
+		<script>
+			//jQuery and JavaScript goes here
+		</script>
+	</head>
+	<body>
+		<!-- First Page of App -->
+		<div data-role = "page" id="HomePage">
+			<div data-role="header">
+				<h1>GWC Club Locator</h1>
+			</div>	
+			<div data-role = "content">
+				<form>
+					<label for="newtaskfield" style="text-align:center">Enter a zip code:</label>
+					<input type="text" data-clear-btn="true" name="user" id="newtaskfield" style="text-align:center" placeholder="Zip code">
+				</form>
+				<form>
+					<a href="#Page2" style="text-decoration:none"><input type="button" data-theme="b" value="Start a Club"></a>
+				</form>
+			</div>
+		
+		<!--Start Page2-->
+		<div data-role="page" id="Page2">
+			<div data-role="header">
+				<h1>New Task</h1>
+			</div>
+			<div data-role="content">
+				<form>
+					<label for="newtaskfield" style="text-align:center">Enter the name of your task below:</label>
+					<input type="text" data-clear-btn="true" name="user" id="newtaskfield" style="text-align:center" placeholder="Task">
+				</form>
+				<form>
+					<a href="#HomePage" style="text-decoration:none"><input type="button" data-theme="b" value="Back"></a>
+				</form>
+			</div>
+		</div>
+</html>
