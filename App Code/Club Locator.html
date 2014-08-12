@@ -22,6 +22,7 @@
 					alert(zip);
 					$("input:text").val("");
 					//search map for zip
+					$("#zipsearch").append('<a href="https://zipcodedistanceapi.redline13.com/rest/Q29sDp4wS7ZhMwgctTQGpYKvbhaKtnXjq6M3wQAoXzGJ6WWAQMgfK0LVhWGLjD5J/radius.xml/' + zip + '/20/miles">Test</a>');
 					
 				});
 			});
@@ -41,6 +42,8 @@
 				<form>
 					<input type="button" data-theme="b" value="Search" id="searchbutton">
 				</form>
+				<div id="zipsearch">
+				</div>
 				<iframe
 				  width="600"
 				  height="450"
