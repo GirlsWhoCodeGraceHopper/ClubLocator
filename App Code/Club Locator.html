@@ -10,6 +10,7 @@
 		<script src="jquery-1.11.1.min.js"></script>
 		<script src="jquery.mobile-1.4.3.min.js"></script>
 		<script src="taskObject.js"></script>
+		<script type="text/javascript" src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 		
 		<style>
 		</style>
@@ -19,16 +20,22 @@
 			$(document).ready(function(){
 				$("#searchbutton").click(function(){
 					var zip=$("input:text").val();
-					alert(zip);
 					$("input:text").val("");
 					//search map for zip
-					$("#zipsearch").append('<a href="https://zipcodedistanceapi.redline13.com/rest/Q29sDp4wS7ZhMwgctTQGpYKvbhaKtnXjq6M3wQAoXzGJ6WWAQMgfK0LVhWGLjD5J/radius.xml/' + zip + '/20/miles">Test</a>');
 					
+					//$("#zipsearch").append('<a href="https://zipcodedistanceapi.redline13.com/rest/Q29sDp4wS7ZhMwgctTQGpYKvbhaKtnXjq6M3wQAoXzGJ6WWAQMgfK0LVhWGLjD5J/radius.xml/' + zip + '/20/miles">Test</a>');
+					if (zip.length >= 5){
+						$("iframe").attr("src",'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf1VuSiVBO-WL6HPXDitR9RGdoTeF4X3Y&q=' + zip);
+					}
 				});
 			});
 		</script>
 	</head>
 	<body>
+		<script>
+			var database=new Firebase ('https://resplendent-heat-4842.firebaseio.com/');
+		</script>
+		
 		<!-- First Page of App -->
 		<div data-role = "page" id="HomePage">
 			<div data-role="header">
