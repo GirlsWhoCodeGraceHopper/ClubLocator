@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" />
 		<script src="jquery-1.11.1.min.js"></script>
 		<script src="jquery.mobile-1.4.3.min.js"></script>
-		<script src="taskObject.js"></script>
 		<script type="text/javascript" src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		
 		<style>
 		</style>
@@ -24,8 +24,19 @@
 					//search map for zip
 					
 					//$("#zipsearch").append('<a href="https://zipcodedistanceapi.redline13.com/rest/Q29sDp4wS7ZhMwgctTQGpYKvbhaKtnXjq6M3wQAoXzGJ6WWAQMgfK0LVhWGLjD5J/radius.xml/' + zip + '/20/miles">Test</a>');
-					if (zip.length >= 5){
+					if ((zip === "V6T 1Z4")||(zip ==="V6T1Z4")||(zip==="v6t 1z4")||(zip==="v6t1z4")){
+						$("iframe").attr("src",'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf1VuSiVBO-WL6HPXDitR9RGdoTeF4X3Y&q=2329+W+Mall+Vancouver,Canada');
+					}
+					else if (zip.length === 5){
 						$("iframe").attr("src",'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf1VuSiVBO-WL6HPXDitR9RGdoTeF4X3Y&q=' + zip);
+						var url = "https://zipcodedistanceapi.redline13.com/rest/Q29sDp4wS7ZhMwgctTQGpYKvbhaKtnXjq6M3wQAoXzGJ6WWAQMgfK0LVhWGLjD5J/radius.json/" + zip + "/10/miles"
+						alert(url);
+						$.getJSON(url,function(data){
+							$.each(data.items,function(i,item){
+								alert("testing");
+								zipbase.push({zipcode: zipcode,distance:distance});
+							});
+						});
 					}
 				});
 			});
@@ -34,6 +45,7 @@
 	<body>
 		<script>
 			var database=new Firebase ('https://resplendent-heat-4842.firebaseio.com/');
+			var zipbase=new Firebase('https://testoing.firebaseio.com/');
 		</script>
 		
 		<!-- First Page of App -->
@@ -49,14 +61,20 @@
 				<form>
 					<input type="button" data-theme="b" value="Search" id="searchbutton">
 				</form>
-				<div id="zipsearch">
+				<div data-role="collapsible" data-mini="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+					<h4>Results</h4>
+					<ul data-role="listview" data-inset="false">
+						<li>Read-only list item 1</li>
+						<li>Read-only list item 2</li>
+						<li>Read-only list item 3</li>
+					</ul>
 				</div>
 				<iframe
 				  width="600"
 				  height="450"
 				  frameborder="0" 
 				  style="border:0; display:block; margin: 0 auto"
-				  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDf1VuSiVBO-WL6HPXDitR9RGdoTeF4X3Y&q=Space+Needle,Seattle+WA">
+				  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDf1VuSiVBO-WL6HPXDitR9RGdoTeF4X3Y&q=USA">
 				</iframe>
 				<form>
 					<a href="#Page2" style="text-decoration:none"><input type="button" data-theme="b" value="Start a Club"></a>
